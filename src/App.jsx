@@ -1,16 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Provider } from 'react-redux';
+import './App.css';
+import AppLayout from './components/layout/AppLayout';
+import { store } from './redux/store';
 
 function App() {
- 
-
-  return (
-    <>
-      
-    </>
-  )
+	return (
+		<Provider store={store}>
+			<AppLayout />
+		</Provider>
+	);
 }
 
-export default App
+export default App;
