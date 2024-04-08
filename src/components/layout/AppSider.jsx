@@ -7,7 +7,6 @@ const siderStyle = {
 };
 
 export default function AppSider() {
-	// const { assets } = useContext(CryptoContext);
 	const { assets } = useSelector((state) => state.crypto);
 
 	return (
