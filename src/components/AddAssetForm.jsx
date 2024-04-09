@@ -10,9 +10,8 @@ import {
 } from 'antd';
 import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useActions } from '../hooks/useActions';
 import CoinInfo from './CoinInfo';
-import { useDispatch } from 'react-redux'
-import { addAsset } from '../redux/slices/cryptoSlice'
 
 const validateMessages = {
 	required: '${label} is required',
@@ -29,11 +28,11 @@ export default function AddAssetForm({ onClose }) {
 	const [coin, setCoin] = useState(null);
 	const [submitted, setSubmitted] = useState(false);
 	const { crypto } = useSelector((state) => state.crypto);
-	const dispatch = useDispatch();
+	const { addAsset } = useActions();
 	const assetRef = useRef();
-	
+	console.log(addAsset);
+
 	const onFinish = (values) => {
-		console.log(values);
 		const newAsset = {
 			id: coin.id,
 			amount: values.amount,
@@ -41,7 +40,7 @@ export default function AddAssetForm({ onClose }) {
 			date: values.date?.$d ?? new Date()
 		};
 		assetRef.current = newAsset;
-		dispatch(addAsset(newAsset));
+		addAsset(newAsset);
 		setSubmitted(true);
 	};
 

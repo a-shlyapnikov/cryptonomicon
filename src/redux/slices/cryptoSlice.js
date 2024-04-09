@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { percentDifference } from '../../utils';
+import { getAssetsFromLS } from '../../utils/getAssets';
 
 export const fetchCrypto = createAsyncThunk(
 	'crypto/fetchCryptoStatus',
@@ -19,7 +20,7 @@ export const fetchCrypto = createAsyncThunk(
 const cryptoSlice = createSlice({
 	name: 'crypto',
 	initialState: {
-		assets: [],
+		assets: getAssetsFromLS(),
 		crypto: [],
 		loading: true
 	},
